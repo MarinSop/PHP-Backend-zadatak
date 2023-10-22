@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\Ingredient;
-use App\Models\Tag;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +14,3 @@ use App\Models\Tag;
 |
 */
 
-Route::get('/', function () {
-    $ingredient = Ingredient::first();
-    $translations = $ingredient->translations()->whereHas('language', function ($query) {
-        $query->where('locale', 'en_GB');
-    })->get()->first()->title;
-    return $translations;
-});

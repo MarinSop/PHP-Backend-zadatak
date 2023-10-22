@@ -21,7 +21,7 @@ class LanguageFactory extends Factory
     {
         return [
             'name' =>  $this->faker->unique()->randomElement(['Croatian','English']),
-            'locale' =>  $this->faker->unique()->randomElement(['hr_HR','en_GB']),
+            'locale' =>  $this->faker->unique()->randomElement(['hr','en']),
         ];
     }
 }

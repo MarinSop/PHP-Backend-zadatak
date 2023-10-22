@@ -22,6 +22,7 @@ class Meal extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
     public function mealTranslations()
     {
         return $this->hasMany(MealTranslation::class);
@@ -31,8 +32,24 @@ class Meal extends Model
     {
         return $this->belongsToMany(Tag::class,'meals_tags', 'meal_id', 'tag_id')->withTimestamps();
     }
+
     public function ingredients()
     {
         return $this->belongsToMany(Ingredient::class,'meals_ingredients', 'meal_id', 'ingredient_id')->withTimestamps();
+    }
+
+    public function getCategory()
+    {
+        return $this->category()->get()->first();
+    }
+
+    public function getTags()
+    {
+        return $this->tags()->get();
+    }
+
+    public function getIngredients()
+    {
+        return $this->ingredients()->get();
     }
 }
